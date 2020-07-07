@@ -48,3 +48,29 @@ public:
         return ans;
     }
 };
+
+//SOLUTION 2
+
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        stack<int> s;
+        for(auto it = asteroids.begin(); it != asteroids.end(); it++)
+        {
+            while(!s.empty() && s.top() > 0 && s.top() < -(*it))
+                s.pop();
+            if(s.empty() || *it > 0 || s.top() < 0)
+                s.push(*it);
+            if(s.top() == -(*it))
+                s.pop();
+            
+        }
+        vector<int> ans(s.size());
+        int len = s.size()-1;
+        for(int i = len; i>=0;i--){
+            ans[i] = s.top();
+            s.pop();
+        }
+        return ans;
+    }
+};
