@@ -23,3 +23,22 @@ public:
         return ans;
     }
 };
+
+//SOLUTION 2 - USING BUILT IN SORT FUNCTION WITH COMPARATOR FUNCTION
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+        if(*max_element(nums.begin(), nums.end()) == 0)
+           return "0";
+        vector<string> nums_string;
+        string ans;
+        for(int x : nums ){
+            nums_string.push_back(to_string(x));
+        }
+        sort(nums_string.begin(), nums_string.end(), [](string s1, string s2){ return s1+s2>s2+s1;});
+        for(string s:nums_string){
+            ans += s;
+        }
+        return ans;
+    }
+};
