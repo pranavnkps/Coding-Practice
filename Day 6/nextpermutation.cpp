@@ -16,3 +16,11 @@ public:
         }
     }
 };
+
+// SOLUTION 2 - USING BUILT IN FUNCTION
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        next_permutation(nums.begin(), nums.end());
+    }
+};
