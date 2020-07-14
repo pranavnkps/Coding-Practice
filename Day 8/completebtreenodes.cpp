@@ -25,3 +25,24 @@ public:
         preorder(root->right);
     }
 };
+
+// SOLUTION 2 - O(log^2(N))
+
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if(root == NULL)
+            return 0;
+        int h = height(root);
+        if(height(root->right) == h-1)
+            return pow(2,h) + countNodes(root->right);
+        else
+            return pow(2,h-1) + countNodes(root->left);
+    }
+    
+    int height(TreeNode* root){
+        if(root == NULL)
+            return -1;
+        return 1 + height(root->left);
+    }
+};
